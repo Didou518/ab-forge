@@ -1,0 +1,9 @@
+
+node_modules
+.vscode/settings.json
+
+# Rapports de tests
+tests-report/
+
+# Dossiers de build générés
+./boilerplate/dist/

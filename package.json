@@ -1,0 +1,51 @@
+{
+	"name": "AB Forge",
+	"version": "3.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"new": "ncp boilerplate",
+		"build": "node ./index.js --build --dir",
+		"start": "nodemon ./index.js --dir",
+		"debug": "nodemon ./index.js --debug --dir",
+		"test": "vitest",
+		"test:run": "vitest run",
+		"test:coverage": "vitest run --coverage",
+		"test:watch": "vitest --watch",
+		"test:ui": "vitest --ui",
+		"test:ci": "vitest run  --coverage --config=vitest.ci.config.js"
+	},
+	"keywords": [],
+	"author": "Pascal Saussier",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.4",
+		"@biomejs/biome": "^2.2.4",
+		"@vitest/coverage-v8": "^3.2.4",
+		"@vitest/ui": "^3.2.4",
+		"autoprefixer": "^10.4.20",
+		"chalk": "5.3.0",
+		"chokidar": "^3.6.0",
+		"cssnano": "^7.0.5",
+		"fs-extra": "^11.2.0",
+		"html-minifier": "4.0.0",
+		"log-timestamp": "0.3.0",
+		"ncp": "2.0.0",
+		"nodemon": "^3.1.4",
+		"postcss": "^8.4.41",
+		"postcss-nested": "^6.2.0",
+		"prettier": "^3.6.2",
+		"stylelint-config-idiomatic-order": "10.0.0",
+		"stylelint-config-standard": "^36.0.1",
+		"svgo": "^3.3.2",
+		"uglify-js": "^3.19.3",
+		"vitest": "^3.2.4",
+		"yargs": "17.7.2"
+	},
+	"engines": {
+		"node": ">=22.0.0",
+		"npm": ">=10.0.0"
+	}
+}

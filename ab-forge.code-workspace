@@ -1,0 +1,48 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.defaultFormatter": "biomejs.biome",
+		"editor.tabSize": 4,
+		"editor.rulers": [100],
+		"[javascript][typescript][typescriptreact][css][html][markdown][json][jsonc][php]": {
+			"editor.formatOnSave": true
+		},
+		"[markdown]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode",
+			"editor.wordWrap": "off"
+		},
+		"emmet.includeLanguages": {
+			"postcss": "css"
+		},
+		"emmet.syntaxProfiles": {
+			"postcss": "css"
+		},
+		"files.associations": {
+			"*.css": "postcss",
+			"*.code-workspace": "jsonc"
+		},
+		"files.trimTrailingWhitespace": true,
+		"search.exclude": {
+			"**/node_modules": true
+		},
+		"[javascript][typescript][typescriptreact][css][json][jsonc]": {
+			"editor.codeActionsOnSave": {
+				"source.organizeImports.biome": "explicit",
+				"source.action.useSortedProperties.biome": "explicit",
+				"source.fixAll.biome": "explicit"
+			}
+		},
+		"javascript.format.enable": false,
+		"javascript.validate.enable": true,
+		"typescript.validate.enable": true,
+		"prettier.configPath": "./front/config/prettier.config.js",
+		"prettier.prettierPath": "./node_modules/prettier/index.cjs"
+	},
+	"extensions": {
+		"recommendations": ["biomejs.biome", "csstools.postcss", "esbenp.prettier-vscode"]
+	}
+}

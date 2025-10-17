@@ -1,0 +1,114 @@
+# GitLab CI Pipeline pour AB Forge
+# S'exécute uniquement quand des fichiers sont modifiés hors du dossier ab-tests
+
+# Variables globales
+variables:
+  CACHE_KEY: "ab-forge-$CI_COMMIT_REF_SLUG"
+
+# Stages de la pipeline
+stages:
+  - install
+  - test
+  - report
+
+# Cache pour les dépendances npm
+cache:
+  key: $CACHE_KEY
+  paths:
+    - node_modules/
+    - .npm/
+
+# Règles communes pour tous les jobs
+.common_rules: &common_rules
+  rules:
+    # S'exécute uniquement si des fichiers sont modifiés hors de ab-tests/
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "**/*"
+        - "!ab-tests/**/*"
+    # S'exécute sur les tags
+    - if: $CI_COMMIT_TAG
+    # S'exécute manuellement
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+# Template pour les jobs Node.js
+.node_template: &node_template
+  image: node:22-alpine
+  tags:
+    - deploy
+    - pmd
+    - ci
+    - aws
+    - rec
+  before_script:
+    - npm config set cache .npm --global
+  <<: *common_rules
+
+# Job d'installation des dépendances
+install_dependencies:
+  <<: *node_template
+  stage: install
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - echo "✅ Dependencies installed successfully"
+    - npm --version
+    - node --version
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 hour
+
+# Job de tests avec couverture de code (inclut tous les tests)
+run_coverage_tests:
+  <<: *node_template
+  stage: test
+  dependencies:
+    - install_dependencies
+  script:
+    - echo "📊 Running tests with coverage..."
+    - npm run test:ci
+    - echo "✅ Coverage tests completed successfully"
+  artifacts:
+    when: always
+    paths:
+      - tests-report/
+    reports:
+      junit: tests-report/junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: tests-report/coverage/cobertura-coverage.xml
+    expire_in: 1 week
+
+# Job de génération des rapports finaux
+generate_reports:
+  <<: *node_template
+  stage: report
+  dependencies:
+    - run_coverage_tests
+  script:
+    - echo "📋 Generating final reports..."
+    - |
+      if [ -d "tests-report" ]; then
+        echo "✅ Test reports generated successfully"
+        echo "📁 Report contents:"
+        ls -la tests-report/
+        if [ -f "tests-report/index.html" ]; then
+          echo "🌐 HTML report available at: tests-report/index.html"
+        fi
+        if [ -d "tests-report/coverage" ]; then
+          echo "📊 Coverage report available at: tests-report/coverage/"
+        fi
+      else
+        echo "❌ No test reports found"
+        exit 1
+      fi
+  artifacts:
+    when: always
+    paths:
+      - tests-report/
+    expire_in: 1 month
+    reports:
+      junit: tests-report/junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: tests-report/coverage/cobertura-coverage.xml

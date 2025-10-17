@@ -1,0 +1,18 @@
+{
+	"title": "Welcome to AB Forge",
+	"description": "This is a complete example of how to use the AB Forge build system. It demonstrates the integration of CSS, HTML, JavaScript, SVG, JSON, and image files.",
+	"delay": 1500,
+	"features": [
+		"CSS processing with PostCSS",
+		"HTML minification",
+		"JavaScript module inclusion",
+		"SVG optimization",
+		"JSON validation",
+		"Image base64 conversion"
+	],
+	"config": {
+		"theme": "light",
+		"animation": true,
+		"responsive": true
+	}
+}

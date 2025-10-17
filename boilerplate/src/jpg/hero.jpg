@@ -1,0 +1,12 @@
+# This is a placeholder for a JPG image
+# In a real project, this would be an actual JPG file
+# The AB Forge build system will convert this to base64
+# For demonstration purposes, we're using a text file
+
+# To use a real image:
+# 1. Replace this file with an actual JPG image
+# 2. The build system will automatically convert it to base64
+# 3. The base64 string will be injected into your JavaScript
+
+# Example of what the base64 output would look like:
+# data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=

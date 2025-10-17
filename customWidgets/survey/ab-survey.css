@@ -1,0 +1,178 @@
+.AB_survey-isDisplayed {
+	overflow: hidden;
+}
+
+.AB_survey {
+	background-color: {{containerBackgroundColor}};
+	border: {{containerBorderWidth}}px solid {{containerBorderColor}};
+	border-radius: {{containerBorderRadius}}px;
+	color: {{textColor}};
+	font-size: {{textSize}}px;
+	font-family: {{textFontFamily}};
+	font-weight: normal;
+	margin: {{containerMargin.top}}px {{containerMargin.right}}px {{containerMargin.bottom}}px {{containerMargin.left}}px;
+	padding: {{containerPadding.top}}px {{containerPadding.right}}px {{containerPadding.bottom}}px {{containerPadding.left}}px;
+	width: {{containerWidth}}px;
+}
+
+.AB_survey-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom:0;
+  left: 0;
+  position: fixed;
+  right:0;
+  top: 0; 
+  z-index: 2147483647;  
+}
+
+.AB_survey-modal {
+	left: 50%;
+	max-width: 95%;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2147483647;
+}
+
+.AB_survey-push {
+	max-width: 100%;
+	position: relative;
+}
+
+.AB_survey-closeButton {
+	background-color: transparent;
+	border: none;
+	border-radius: 50%;
+	color: {{closeButtonTextColor}} !important;
+	cursor: pointer;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.AB_survey-title {
+	color: {{titleTextColor}};
+	font-family: {{titleFontFamily}};
+	font-size: {{titleTextSize}}px;
+	font-weight: bold;
+	margin: 20px 0 10px;
+	text-align: {{titleTextAlign}};
+}
+
+.AB_survey-text {
+	margin-bottom: 20px;
+	text-align: {{aboutTextAlign}};
+}
+
+.AB_survey-question {
+	margin: 20px 0 10px;
+}
+
+.AB_survey-formFieldset {
+	border: 0;
+	margin: 0 0 20px;
+	min-width: 0;
+	padding: 0;
+}
+
+.AB_survey-formLegend {
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+.AB_survey-formLegendQuestion {
+	color: {{questionTextColor}};
+	font-family: {{questionFontFamily}};
+	font-size: {{questionTextSize}}px;
+	font-weight: bold;
+}
+
+.AB_survey-answerButton,
+.AB_survey-formButton {
+	background-color: {{buttonBackgroundColor}};
+	border: {{buttonBorderWidth}}px solid {{buttonBorderColor}};
+	border-radius: {{buttonBorderRadius}}px;
+	color: {{buttonTextColor}};
+	cursor: pointer;
+	display: block;
+	font-size: {{buttonTextSize}}px;
+	font-weight: {{buttonFontWeight}};
+	margin: 0 auto;
+	padding: 5px 10px;
+}
+
+.AB_survey-counter {
+	bottom: 0;
+	font-size: {{counterTextSize}}px;
+	margin: 20px 0 10px;
+	position: absolute;
+	right: 10px;
+}
+
+.AB_survey-thankyou,
+.AB_survey-error {
+	margin: 20px 0 10px;
+}
+
+/** Generic fieldset styles **/
+.AB_survey-formLabel {
+	align-items: flex-start;
+	display: flex;
+}
+
+.AB_survey-formInput,
+.AB_survey-formTextArea {
+	border: 1px solid #737373;
+	font-size: {{textSize}}px;
+	font-family: {{textFontFamily}}, Arial, sans-serif;
+	margin: 5px 0;
+	padding: 10px;
+}
+
+.AB_survey-formInput[type='radio'],
+.AB_survey-formInput[type='checkbox'] {
+	appearance: checkbox;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	width: 16px;
+}
+
+.AB_survey-formTextArea,
+.AB_survey-formInput[type='text'] {
+  	width: -webkit-fill-available;
+}
+
+/** Specific styles by answer type **/
+.AB_survey-scaledChoice {
+	align-items: center;
+	display: flex;
+	gap: 5px;
+  	justify-content: space-between;
+}
+
+.AB_survey-scaledChoice .AB_survey-formInput[type='radio'] {
+	margin: 0;
+}
+
+/** States **/
+.AB_survey--hidden {
+	display: none;
+}
+
+.AB_survey--visuallyhidden {
+	border: 0;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.AB_survey-formButton[disabled] {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
